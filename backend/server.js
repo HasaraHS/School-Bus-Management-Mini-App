@@ -4,8 +4,13 @@ require('dotenv').config();
 
 const app = express();
 
+const authRoutes = require('./src/routes/auth.route');
+
 app.use(cors());
 app.use(express.json());
+
+//routes
+app.use('/api/auth', authRoutes);
 
 // error handling middleware
 app.use((err, req, res, next) => {
