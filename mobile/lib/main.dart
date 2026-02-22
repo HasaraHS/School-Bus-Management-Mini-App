@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_bus_management_mini_app/constant/app_colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      color: AppColors.primary,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -105,9 +107,12 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: .center,
           children: [
             const Text('You have pushed the button this many times:'),
+            
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                color: AppColors.primary,
+              ),
             ),
           ],
         ),
