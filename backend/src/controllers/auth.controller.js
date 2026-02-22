@@ -50,7 +50,8 @@ const login = async (req, res, next) => {
     next(err);
   }
 
-  module.exports = {
-    login,
-  };
+};
+
+module.exports = {
+  login,
 };

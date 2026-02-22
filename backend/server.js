@@ -5,12 +5,14 @@ require('dotenv').config();
 const app = express();
 
 const authRoutes = require('./src/routes/auth.route');
+const schoolRoutes = require('./src/routes/school.route');
 
 app.use(cors());
 app.use(express.json());
 
 //routes
 app.use('/api/auth', authRoutes);
+app.use('/api/schools', schoolRoutes);
 
 // error handling middleware
 app.use((err, req, res, next) => {

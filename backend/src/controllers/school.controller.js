@@ -1,21 +1,20 @@
 const supabase = require("../utils/supabase");
 
+// Get single school details
 const getSchoolDetails = async (req, res, next) => {
   try {
     const { schoolId } = req.params;
 
     const { data: school, error } = await supabase
       .from("schools")
-      .select(
-        `
-                *,
-                users (
-                    id,
-                    full_name,
-                    email
-                )
-            `,
-      )
+      .select(`
+        *,
+        users (
+          id,
+          full_name,
+          email
+        )
+      `)
       .eq("id", schoolId)
       .single();
 
@@ -27,25 +26,26 @@ const getSchoolDetails = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
 
-  const getAllSchools = async (req, res, next) => {
-    try {
-      const { data: schools, error } = await supabase
-        .from("schools")
-        .select("*");
+// Get all schools
+const getAllSchools = async (req, res, next) => {
+  try {
+    const { data: schools, error } = await supabase
+      .from("schools")
+      .select("*");
 
-      if (error) {
-        return res.status(500).json({ error: "Failed to fetch schools" });
-      }
-
-      res.json(schools);
-    } catch (err) {
-      next(err);
+    if (error) {
+      return res.status(500).json({ error: "Failed to fetch schools" });
     }
-  };
 
-  module.exports = {
-    getSchoolDetails,
-    getAllSchools,
-  };
+    res.json(schools);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = {
+  getSchoolDetails,
+  getAllSchools,
 };
