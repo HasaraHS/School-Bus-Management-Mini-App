@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     const SizedBox(height: AppDimensions.paddingLarge * 2),
 
-                    // School Dropdown (top of email field)
+                    // School Dropdown
                     Consumer<SchoolProvider>(
                       builder: (context, schoolProvider, child) {
                         if (schoolProvider.isLoading && schoolProvider.schools.isEmpty) {
